@@ -8,7 +8,7 @@
 import UIKit
 
 class MangaCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var mangaImage: UIImageView!
     @IBOutlet weak var mangaLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
