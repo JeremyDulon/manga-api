@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		14BA7111C8B45EDD745F1DA9 /* Pods_mangaedenapiswift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D865C91180D895379EB431 /* Pods_mangaedenapiswift.framework */; };
 		2A572FF4AF145EBB0D9EF34D /* Pods_mangaedenapiswiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A8EB44C64898EBF5F03793 /* Pods_mangaedenapiswiftUITests.framework */; };
+		3F3A452620C5601C00F134FC /* MangaDescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A452520C5601C00F134FC /* MangaDescriptionController.swift */; };
+		3F3CE83320C5B58E0066BA5A /* ReadChapterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3CE83220C5B58D0066BA5A /* ReadChapterController.swift */; };
+		3F3CE83620C5BE380066BA5A /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F3CE83520C5BE380066BA5A /* Slide.xib */; };
+		3F3CE83820C5BF6B0066BA5A /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3CE83720C5BF6B0066BA5A /* Slide.swift */; };
 		3F8C9E6520AD84F90064F5EA /* Manga.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C9E6320AD84F90064F5EA /* Manga.xcdatamodeld */; };
 		3F8C9E8820AEC84C0064F5EA /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8C9E8720AEC84C0064F5EA /* ApiManager.swift */; };
 		3F9D87FE20C4529B00496044 /* MangaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9D87FC20C4529A00496044 /* MangaCollectionViewCell.swift */; };
@@ -44,6 +48,10 @@
 /* Begin PBXFileReference section */
 		121B8A3F8C4C5B773A6DE86B /* Pods-mangaedenapiswift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangaedenapiswift.release.xcconfig"; path = "Pods/Target Support Files/Pods-mangaedenapiswift/Pods-mangaedenapiswift.release.xcconfig"; sourceTree = "<group>"; };
 		37A8EB44C64898EBF5F03793 /* Pods_mangaedenapiswiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mangaedenapiswiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F3A452520C5601C00F134FC /* MangaDescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaDescriptionController.swift; sourceTree = "<group>"; };
+		3F3CE83220C5B58D0066BA5A /* ReadChapterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChapterController.swift; sourceTree = "<group>"; };
+		3F3CE83520C5BE380066BA5A /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
+		3F3CE83720C5BF6B0066BA5A /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		3F84AC79460A1666F2D0AFDE /* Pods-mangaedenapiswiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mangaedenapiswiftUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mangaedenapiswiftUITests/Pods-mangaedenapiswiftUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3F8C9E6420AD84F90064F5EA /* Manga.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Manga.xcdatamodel; sourceTree = "<group>"; };
 		3F8C9E8720AEC84C0064F5EA /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -112,10 +120,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3F3CE83420C5BD000066BA5A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				3F9D87FD20C4529A00496044 /* MangaCollectionViewCell.xib */,
+				3F9D87FC20C4529A00496044 /* MangaCollectionViewCell.swift */,
+				3F3CE83520C5BE380066BA5A /* Slide.xib */,
+				3F3CE83720C5BF6B0066BA5A /* Slide.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		3FB97EF320B2084C0007A95E /* controller */ = {
 			isa = PBXGroup;
 			children = (
 				3FF07D9120932AD90076551B /* SearchMangaController.swift */,
+				3F3A452520C5601C00F134FC /* MangaDescriptionController.swift */,
+				3F3CE83220C5B58D0066BA5A /* ReadChapterController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -162,8 +183,7 @@
 		3FF07D8E20932AD90076551B /* mangaedenapiswift */ = {
 			isa = PBXGroup;
 			children = (
-				3F9D87FC20C4529A00496044 /* MangaCollectionViewCell.swift */,
-				3F9D87FD20C4529A00496044 /* MangaCollectionViewCell.xib */,
+				3F3CE83420C5BD000066BA5A /* view */,
 				3FB97EF520B208640007A95E /* service */,
 				3FB97EF420B208580007A95E /* model */,
 				3FB97EF320B2084C0007A95E /* controller */,
@@ -315,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F3CE83620C5BE380066BA5A /* Slide.xib in Resources */,
 				3FF07D9A20932AD90076551B /* LaunchScreen.storyboard in Resources */,
 				3FF07D9720932AD90076551B /* Assets.xcassets in Resources */,
 				3FF07D9520932AD90076551B /* Main.storyboard in Resources */,
@@ -419,9 +440,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F8C9E8820AEC84C0064F5EA /* ApiManager.swift in Sources */,
+				3F3A452620C5601C00F134FC /* MangaDescriptionController.swift in Sources */,
 				3FF07D9220932AD90076551B /* SearchMangaController.swift in Sources */,
 				3FB97EF720B208780007A95E /* MangaModel.swift in Sources */,
 				3F9D87FE20C4529B00496044 /* MangaCollectionViewCell.swift in Sources */,
+				3F3CE83320C5B58E0066BA5A /* ReadChapterController.swift in Sources */,
+				3F3CE83820C5BF6B0066BA5A /* Slide.swift in Sources */,
 				3F8C9E6520AD84F90064F5EA /* Manga.xcdatamodeld in Sources */,
 				3FF07D9020932AD90076551B /* AppDelegate.swift in Sources */,
 			);
@@ -592,11 +616,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6JC537KAVM;
 				INFOPLIST_FILE = mangaedenapiswift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ynov.mangaedenapiswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -609,11 +636,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6JC537KAVM;
 				INFOPLIST_FILE = mangaedenapiswift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ynov.mangaedenapiswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

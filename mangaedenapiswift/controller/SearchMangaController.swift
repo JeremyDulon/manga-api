@@ -51,5 +51,14 @@ extension SearchMangaController {
         cell.mangaLabel.text = manga.title
         
         return cell
+    }	
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let name = "mangaDescription"
+        let	mangaDescriptionControllerView = storyboard?.instantiateViewController(withIdentifier: name) as! MangaDescriptionController
+        mangaDescriptionControllerView.mangaId = mangaCollection[indexPath.row].id!
+        
+        print(mangaDescriptionControllerView.mangaId)
+        self.navigationController?.pushViewController(mangaDescriptionControllerView, animated: true)
     }
 }

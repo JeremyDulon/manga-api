@@ -24,16 +24,72 @@ class ApiManager {
         return mangaListUrl
     }
     
-    func getMangaDetailUrl() -> URL {
-        let mangaDetailUrl = baseApiUrl.appendingPathComponent(mangaDetailPath)
+    func getMangaDetailUrl(mangaId: String) -> URL {
+        let mangaDetailUrl = baseApiUrl.appendingPathComponent(mangaDetailPath).appendingPathComponent(mangaId)
         
         return mangaDetailUrl
     }
     
-    func getMangaListData(completion: @escaping ([String: Any]?, Error?) -> ()) {
-        let mangaDetailUrl = getMangaListUrl()
+    func getChapterImagesUrl(chapterId: String) -> URL {
+        let chapterDetailUrl = baseApiUrl.appendingPathComponent(chapterDetailPath).appendingPathComponent(chapterId)
+        
+        return chapterDetailUrl
+    }
     
+    func getChapterImagesData(chapterId: String, completion: @escaping ([String: Any]?, Error?) -> ()) {
+        let chapterDetailUrl = getChapterImagesUrl(chapterId: chapterId)
+        
+        let urlRequest = URLRequest(url: chapterDetailUrl)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            if (error != nil) {
+                completion(nil, error)
+            } else {
+                if (data != nil) {
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: data!, options: [])
+                        
+                        if let chapterDetail = jsonData as? [String: Any] {
+                            completion(chapterDetail, nil)
+                        }
+                    } catch let error as NSError {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func getMangaDetailData(mangaId: String, completion: @escaping ([String: Any]?, Error?) -> ()) {
+        let mangaDetailUrl = getMangaDetailUrl(mangaId: mangaId)
+        
         let urlRequest = URLRequest(url: mangaDetailUrl)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            if(error != nil) {
+                completion(nil, error)
+            } else {
+                if (data != nil) {
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: data!, options: [])
+                        
+                        if let mangaDetail = jsonData as? [String: Any] {
+                            completion(mangaDetail, nil)
+                        }
+                    } catch let error as NSError {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func getMangaListData(completion: @escaping ([String: Any]?, Error?) -> ()) {
+        let mangaListUrl = getMangaListUrl()
+    
+        let urlRequest = URLRequest(url: mangaListUrl)
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             if(error != nil) {
