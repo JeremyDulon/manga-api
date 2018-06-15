@@ -26,7 +26,8 @@ class ChapterImageModel {
 }
 
 class ReadChapterController: UIPageViewController {
-    @IBOutlet weak var imageScrollView: UIScrollView!
+    
+    private var imageScrollView: UIScrollView?
     
     var chapterId: String = String()
     var imagesData: [Any] = [Any]()
@@ -53,6 +54,7 @@ class ReadChapterController: UIPageViewController {
                 for imageUrl in images {
                     let slide: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
                     slide.image.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"), options: SDWebImageOptions.retryFailed, completed: nil)
+                    slide.image.contentMode = .scaleAspectFit
                     
                     slides.append(slide)
                 }
@@ -62,12 +64,26 @@ class ReadChapterController: UIPageViewController {
     }
     
     func setupSlideScrollView(slides: [Slide]) {
-        self.imageScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        self.imageScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        self.imageScrollView = UIScrollView()
+        self.imageScrollView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        self.imageScrollView?.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        
+        // If you want a pagination
+        //self.imageScrollView?.isPagingEnabled = true
         
         for i in 0 ..< slides.count {
             slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
-            self.imageScrollView!.addSubview(slides[i])
+            self.imageScrollView?.addSubview(slides[i])
+        }
+        
+        if let scrollView = self.imageScrollView {
+            view.addSubview(scrollView)
+            
+            // Add constraint in code (left, top, right, buttom)
+            imageScrollView?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+            imageScrollView?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+            imageScrollView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+            imageScrollView?.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         }
     }
 }

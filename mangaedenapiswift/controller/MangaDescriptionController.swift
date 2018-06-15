@@ -22,7 +22,7 @@ class ChapterModel {
         self.id = jsonData[3] as? String
         
         if(self.title == nil) {
-            self.title = "Chapter " + self.number!.description
+            self.title = "Chapter " + String(self.number ?? 1)
         }
     }
 }
@@ -30,7 +30,7 @@ class ChapterModel {
 class MangaDescriptionController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var mangaTitleLabel: UILabel!
     @IBOutlet weak var mangaAuthorLabel: UILabel!
-    @IBOutlet weak var mangaDescriptionLabel: UILabel!
+    @IBOutlet weak var mangaDescriptionTextView: UITextView!
     @IBOutlet weak var mangaPicker: UIPickerView!
     @IBOutlet weak var mangaImage: UIImageView!
     @IBOutlet weak var readChapter: UIButton!
@@ -59,7 +59,7 @@ class MangaDescriptionController: UIViewController, UIPickerViewDelegate, UIPick
             DispatchQueue.main.async {
                 self.mangaTitleLabel.text = mangaData?["title"] as? String
                 self.mangaAuthorLabel.text = mangaData?["author"] as? String
-                self.mangaDescriptionLabel.text = mangaData?["description"] as? String
+                self.mangaDescriptionTextView.text = mangaData?["description"] as? String
                 let imageUrlPath = mangaData?["image"] as? String
                 if(imageUrlPath != nil) {
                     let imageUrl = ApiManager.instance.getImageUrl(imagePath: imageUrlPath!)
